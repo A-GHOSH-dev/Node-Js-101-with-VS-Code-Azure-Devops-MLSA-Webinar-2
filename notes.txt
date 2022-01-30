@@ -1,0 +1,38 @@
+npm=node package manager, install packages
+npm init
+npm i express mongoose etc
+node modules folder has dependencies
+npm i -g nodemon
+package.json contains complete dependencies tree
+There are three console methods that are used to write any node.js stream:
+console.log()
+console.error()
+console.warn()
+
+The Node.js or node come bundled with REPL environment. Each part of the REPL environment has a specific work.
+Read Eval Print and Loop
+
+A list of Node.js global objects are given below:
+
+__dirname
+__filename
+Console
+Process
+Buffer
+setImmediate(callback[, arg][, ...])
+setInterval(callback, delay[, arg][, ...])
+setTimeout(callback, delay[, arg][, ...])
+clearImmediate(immediateObject)
+clearInterval(intervalObject)
+clearTimeout(timeoutObject)
+
+import object
+module wrapper function - wraps any object into this
+
+os modules
+path modules
+fs modules
+url module
+event module
+http module
+
