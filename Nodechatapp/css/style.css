@@ -7,7 +7,7 @@
 
 body{
     height: 100%;
-    background-image: linear-gradient(white, rgb(241, 67, 197));
+    background-image: linear-gradient(rgb(22, 255, 1), rgb(255, 0, 157));
 }
 h1{
     margin-top: 12px;
@@ -27,11 +27,14 @@ h1{
 }
 
 .message{
-    background-color: rgb(253, 251, 251);
-    width: 24%;
-    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    font-size: larger;
+    color: white;
+    font-weight: bold;
+    width: 35%;
+    padding: 12px;
     margin: 17px 12px;
-    border: 2px solid black;
+    border: 2px solid rgb(5, 114, 10);
     border-radius: 10px;
 }
 
