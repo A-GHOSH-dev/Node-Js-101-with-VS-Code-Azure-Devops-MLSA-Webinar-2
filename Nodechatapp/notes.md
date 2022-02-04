@@ -119,6 +119,7 @@ h1{
 ### Make a client.js inside js folder.
 
 ### Link the client.js script an the style.css file to index.html file.
+- defer separates the script from interfering with the html file.
 ```
   <title>NODE Chat Application</title>
     <script defer src="js/client.js"></script>
@@ -196,7 +197,89 @@ socket.on('disconnect', message =>{
   });
 ```
 
+### By default, the Socket.IO server exposes a client bundle at /socket.io/socket.io.js. Hence we need to add this script in index.html. By this, server and client is connected.
+```
+<script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+```
+
 ## CLIENT.JS:
+- io will be registered as a global variable
+```
+const socket = io('http://localhost:8000');
+```
+- Get the form, input field, message container
+```
+const form = document.getElementById('send-container');
+const messageInput = document.getElementById('messageInp')
+const messageContainer = document.querySelector(".container")
+```
+- New user joined. Ask for a prompt to enter name. Emit event new-user-joined.
+```
+const name = prompt("Enter you Name to join chat");
+socket.emit('new-user-joined', name);
+```
+- user-joined event. Append the message in the container.
+```
+//define append function
+
+socket.on('user-joined', name =>{
+append(`${name} joined the chat`, 'right')
+})
+```
+- Define append, takes 2 arguments. 
+```
+const append = (message, position)=>{
+    const messageElement = document.createElement('div');
+    messageElement.innerText = message;
+    messageElement.classList.add('message');
+    messageElement.classList.add(position);
+    messageContainer.append(messageElement);    
+}
+```
+- recieve event. Name: Message in left side for other users.
+```
+socket.on('recieve', data =>{
+    append(`${data.name}: ${data.message}`, 'left')
+})
+```
+- send event. on submit.Eventlistener to the form. when form gets submitted, send message to server.
+- preventDefault prevents page reload.
+- message gets the inpu that user gives.
+- run append function. to show that You have sent the message. this time right side.
+- emit send event and message.
+- make input field empty.
+```
+form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const message = messageInput.value;
+    append(`You: ${message}`, 'right');
+    socket.emit('send', message);
+    messageInput.value = ''
+})
+```
+- User left the chat. event left.
+```
+socket.on('left', name =>{
+    append(`${name} left the chat`, 'left')
+})
+```
+
+### Audio adding. tone.mp3.
+- In client.js add the tone. Inside append function.
+```
+ if(position == 'left'){
+        audio.play();
+    }
+```
+
+### Remove the default messages in index.html
+```
+ <div class="container">
+       <!--- <div class="message left">Arun: Hello I am Arun</div>
+        <div class="message right">Me: Hi I am Ananya</div>
+    -->
+    </div>
+```
 
 
 
