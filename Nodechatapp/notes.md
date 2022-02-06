@@ -142,6 +142,7 @@ npm i socket.io
 ### Create an index.js file inside nodeServer
 Index.js is the nodeserver that will handle the socket.io connections.
 
+
 ## INDEX.JS:
 - Using socket.io on port 8000. The require('socket.io')(http) creates a new socket.io instance attached to the http server.
 ```

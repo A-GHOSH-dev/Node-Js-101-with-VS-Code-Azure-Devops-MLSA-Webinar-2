@@ -4,7 +4,7 @@ const socket = io('http://localhost:8000');
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp')
 const messageContainer = document.querySelector(".container")
-var audio = new Audio('chaptone.mp3')
+var audio = new Audio('tone.mp3')
 
 const append = (message, position)=>{
     const messageElement = document.createElement('div');
@@ -25,6 +25,7 @@ form.addEventListener('submit', (e)=>{
     socket.emit('send', message);
     messageInput.value = ''
 })
+
 const name = prompt("Enter you Name to join chat");
 socket.emit('new-user-joined', name);
 
